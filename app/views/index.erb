@@ -1,0 +1,17 @@
+<% if @url %>
+  <div id="error"><%=  @url.errors.full_messages %></div>
+<% end %>
+
+<form action = "/urls" method = "post">
+<input type = "text" name = "full_url" placeholder = "Enter full url">
+<input type = "submit" value = "Submit">
+</form><br /><br />
+<p><em>Recent Links</em></p><br />
+
+<% @recent.each do |url| %>
+  <li>Full Url: <%= url.full_url%></li>
+  <li>Short Url: <a href ="/<%=  url.short_url %>"><%=  url.short_url %>></a></li>
+  <li>Click Count: <%=url.click_count %></li>
+  <br>
+<% end %>
+
